@@ -39,6 +39,25 @@ class CoursesPage extends React.Component {
     }
   };
 
+  handleBuscarFiltro = () => {
+    var valorBuscar=document.getElementById("BuscarText").value;
+    if(valorBuscar=="")
+    {
+      alert("ingrese el curso a buscar");
+      return;
+    }
+    //alert("hola "+valorBuscar);
+    this.props.actions.getCoursesFilter(valorBuscar);
+    //this.props.actions.getCourses();
+  };
+
+  handleTodosCursos = () => {
+    
+    //alert("hola "+valorBuscar);
+    this.props.actions.getCourses();
+    //this.props.actions.getCourses();
+  };
+
   render() {
     return (
       <>
@@ -55,7 +74,11 @@ class CoursesPage extends React.Component {
               >
                 Add Course
             </button>
-
+            {/* <form className="form-inline"> */}
+            <input id="BuscarText" className="form-control" type="text" placeholder="Curso a buscar"></input>
+              <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" onClick={this.handleBuscarFiltro}>Buscar</button>
+              <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" type="submit" onClick={this.handleTodosCursos}>Todos los Cursos</button>
+            {/* </form>             */}
               <CourseList
                 onDeleteClick={this.handleDeleteCourse}
                 courses={this.props.courses}
@@ -95,7 +118,8 @@ function mapDispatchToProps(dispatch) {
     actions: {
       getCourses: bindActionCreators(courseActions.getCourses, dispatch),
       getProfessors: bindActionCreators(ProfessorActions.getProfessors, dispatch),
-      deleteCourse: bindActionCreators(courseActions.deleteCourse, dispatch)
+      deleteCourse: bindActionCreators(courseActions.deleteCourse, dispatch),
+      getCoursesFilter: bindActionCreators(courseActions.getCoursesFilter, dispatch)
     }
   };
 }

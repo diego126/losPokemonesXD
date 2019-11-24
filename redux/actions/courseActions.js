@@ -33,6 +33,24 @@ export function getCourses() {
   };
 }
 
+export function getCoursesFilter(valorBuscar) {  
+  //console.log(valorBuscar);
+  var flag=1;
+  return function (dispatch) {
+    dispatch(beginApiCall());
+    return courseApi
+      .getCoursesFilter()
+      .then(courses => {
+        //console.log(valorBuscar);
+        dispatch(getCourseFilter(courses,valorBuscar,flag));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
 export function saveCourse(course) {
   //eslint-disable-next-line no-unused-vars
   return function (dispatch, getState) {
