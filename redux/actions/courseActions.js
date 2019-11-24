@@ -33,6 +33,7 @@ export function getCourses() {
   };
 }
 
+
 export function getCoursesFilter(valorBuscar) {  
   //console.log(valorBuscar);
   var flag=1;

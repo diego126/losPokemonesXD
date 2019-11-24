@@ -7,6 +7,7 @@ export function getCourses() {
     .catch(handleError);
 }
 
+
 export function getCoursesFilter() {
   return fetch(baseUrl)
     .then(handleResponse)

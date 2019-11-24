@@ -73,12 +73,12 @@ class CoursesPage extends React.Component {
                 onClick={() => this.setState({ redirectToAddCoursePage: true })}
               >
                 Add Course
-            </button>
-            {/* <form className="form-inline"> */}
+            </button> 
+                       
             <input id="BuscarText" className="form-control" type="text" placeholder="Curso a buscar"></input>
               <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" onClick={this.handleBuscarFiltro}>Buscar</button>
               <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" type="submit" onClick={this.handleTodosCursos}>Todos los Cursos</button>
-            {/* </form>             */}
+            
               <CourseList
                 onDeleteClick={this.handleDeleteCourse}
                 courses={this.props.courses}
