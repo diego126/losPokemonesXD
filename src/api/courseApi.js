@@ -1,4 +1,4 @@
-import { handleResponse, handleError } from "./apiUtils";
+import { handleResponse, handleError, handleResponseList } from "./apiUtils";
 const baseUrl = process.env.API_URL + "/courses/";
 
 export function getCourses() {
@@ -7,6 +7,15 @@ export function getCourses() {
     .catch(handleError);
 }
 
+export function getCoursesData(page,_sort,_order) {
+  let string_order="";
+  if(_sort && _order){
+    string_order="&_sort="+_sort+"&_order="+_order
+  }
+  return fetch(baseUrl + "?_page="+page+"&_limit=5"+string_order)
+    .then(handleResponseList)
+    .catch(handleError);
+}
 export function saveCourse(course) {
   return fetch(baseUrl + (course.id || ""), {
     method: course.id ? "PUT" : "POST", // POST for create, PUT to update when id already exists.

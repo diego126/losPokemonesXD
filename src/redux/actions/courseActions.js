@@ -6,6 +6,10 @@ export function getCourseSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
+export function getCourseDataSuccess(courses) {
+  return { type: types.LOAD_COURSES_SUCCESS,courses:{data:courses.data,total:courses.total }}; 
+}
+
 export function createCourseSuccess(course) {
   return { type: types.CREATE_COURSE_SUCCESS, course };
 }
@@ -25,6 +29,21 @@ export function getCourses() {
       .getCourses()
       .then(courses => {
         dispatch(getCourseSuccess(courses));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
+export function getCoursesData(page=1,_sort,_order) {
+  return function (dispatch) {
+    dispatch(beginApiCall()); 
+    return courseApi
+      .getCoursesData(page,_sort,_order)
+      .then(courses => {
+        dispatch(getCourseDataSuccess(courses)); 
       })
       .catch(error => {
         dispatch(apiCallError(error));

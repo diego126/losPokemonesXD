@@ -1,0 +1,52 @@
+
+/* -----------------------------------------------------------
+	pagination
+----------------------------------------------------------- */
+.pagination li a {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  border: 1px solid #ddd;
+  outline: 0;
+  font-size: 20px;
+  border-radius: 8px;
+  }
+  .pagination li.active {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #fff;
+    border-color: #337ab7;
+    border-radius: 8px;
+  }
+  .pagination li.active a{
+    background-color: rgb(42, 176, 243); color: #fff;border-radius: 8px;
+  }
+  .pagination li a:hover:not(.active) {background-color: #008BD2; color: #fff;border-radius: 8px;}
+
+  /* -----------------------------------------------------------
+	box_search
+----------------------------------------------------------- */
+.react-bs-table-search-form {
+  position: relative;
+}
+.react-bs-table-search-form input[type="text"] {
+  padding-right: 10px;
+  width: 600px;
+
+}
+
+thead {
+  background-color: rgb(7, 132, 194);
+  color: #fff;
+}
+
+#pagina{
+  width: 65px;
+  display: inline;
+}
