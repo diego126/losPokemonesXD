@@ -43,6 +43,26 @@ class CoursesPage extends React.Component {
       toast.error("Delete failed. " + error.message, { autoClose: false });
     }
   };
+
+  handleBuscarFiltro = () => {
+    var valorBuscar=document.getElementById("BuscarText").value;
+    if(valorBuscar=="")
+    {
+      alert("ingrese el curso a buscar");
+      return;
+    }
+    //alert("hola "+valorBuscar);
+    this.props.actions.getCoursesFilter(valorBuscar);
+    //this.props.actions.getCourses();
+  };
+
+  handleTodosCursos = () => {
+    
+    //alert("hola "+valorBuscar);
+    this.props.actions.getCourses();
+    //this.props.actions.getCourses();
+  };
+
   handlePageChange = async page => {
     this.setState({page_current:page});
     await this.props.actions.getCourses(page);
@@ -77,6 +97,10 @@ class CoursesPage extends React.Component {
             >
               Add Course
             </button>
+
+            {/* <input id="BuscarText" className="form-control" type="text" placeholder="Curso a buscar"></input>
+            <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" onClick={this.handleBuscarFiltro}>Buscar</button>
+            <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" type="submit" onClick={this.handleTodosCursos}>Todos los Cursos</button> */}
 
             <div className="row">
               <div className="col-md-8 box_change_pagelimi text-right pull-right">
@@ -151,11 +175,9 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       getCourses: bindActionCreators(courseActions.getCoursesData, dispatch),
-      getProfessors: bindActionCreators(
-        ProfessorActions.getProfessors,
-        dispatch
-      ),
-      deleteCourse: bindActionCreators(courseActions.deleteCourse, dispatch)
+      getProfessors: bindActionCreators(ProfessorActions.getProfessors,dispatch),
+      deleteCourse: bindActionCreators(courseActions.deleteCourse, dispatch),
+      getCoursesFilter: bindActionCreators(courseActions.getCoursesFilter, dispatch)
     }
   };
 }

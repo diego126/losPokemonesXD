@@ -6,6 +6,11 @@ export function getProfessorSuccess(professors) {
   return { type: types.LOAD_PROFESSORS_SUCCESS, professors };
 }
 
+export function getProfessorFilter(professors,valorBuscar,flag) {
+  //console.log(valorBuscar);
+  return { type: types.LOAD_PROFESSORS_SUCCESS, professors,data:valorBuscar,flag:flag };
+}
+
 export function createProfessorSuccess(professor) {
   return { type: types.CREATE_PROFESSOR_SUCCESS, professor };
 }
@@ -25,6 +30,24 @@ export function getProfessors() {
       .getProfessors()
       .then(professors => {
         dispatch(getProfessorSuccess(professors));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
+export function getProfessorsFilter(valorBuscar) {  
+  //console.log(valorBuscar);
+  var flag=1;
+  return function (dispatch) {
+    dispatch(beginApiCall());
+    return professorApi
+      .getProfessorsFilter()
+      .then(professors => {
+        //console.log(valorBuscar);
+        dispatch(getProfessorFilter(professors,valorBuscar,flag));
       })
       .catch(error => {
         dispatch(apiCallError(error));

@@ -32,6 +32,25 @@ class ProfessorsPage extends React.Component {
     }
   };
 
+  handleBuscarFiltro = () => {
+    var valorBuscar=document.getElementById("BuscarText").value;
+    if(valorBuscar=="")
+    {
+      alert("ingrese el profesor a buscar");
+      return;
+    }
+    //alert("hola "+valorBuscar);
+    this.props.actions.getProfessorsFilter(valorBuscar);
+    //this.props.actions.getCourses();
+  };
+
+  handleTodosProfesores = () => {
+    
+    //alert("hola "+valorBuscar);
+    this.props.actions.getProfessors();
+    //this.props.actions.getCourses();
+  };
+
   render() {
     return (
       <>
@@ -48,6 +67,10 @@ class ProfessorsPage extends React.Component {
               >
                 Add Professors
             </button>
+
+            <input id="BuscarText" className="form-control" type="text" placeholder="Profesor a buscar"></input>
+            <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" onClick={this.handleBuscarFiltro}>Buscar</button>
+            <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" type="submit" onClick={this.handleTodosProfesores}>Todos los profesores</button>
 
               <ProfessorList
                 onDeleteClick={this.handleDeleteProfessor}
@@ -77,7 +100,8 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       getProfessors: bindActionCreators(ProfessorActions.getProfessors, dispatch),
-      deleteProfessor: bindActionCreators(ProfessorActions.deleteProfessor, dispatch)
+      deleteProfessor: bindActionCreators(ProfessorActions.deleteProfessor, dispatch),
+      getProfessorsFilter: bindActionCreators(ProfessorActions.getProfessorsFilter, dispatch)
     }
   };
 }

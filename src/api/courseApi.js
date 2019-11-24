@@ -7,6 +7,12 @@ export function getCourses() {
     .catch(handleError);
 }
 
+export function getCoursesFilter() {
+  return fetch(baseUrl)
+    .then(handleResponse)
+    .catch(handleError);
+}
+
 export function getCoursesData(page,_sort,_order) {
   let string_order="";
   if(_sort && _order){

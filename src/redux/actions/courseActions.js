@@ -6,6 +6,11 @@ export function getCourseSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
+export function getCourseFilter(courses,valorBuscar,flag) {
+  //console.log(valorBuscar);
+  return { type: types.LOAD_COURSES_SUCCESS, courses,data:valorBuscar,flag:flag };
+}
+
 export function getCourseDataSuccess(courses) {
   return { type: types.LOAD_COURSES_SUCCESS,courses:{data:courses.data,total:courses.total }}; 
 }
@@ -29,6 +34,24 @@ export function getCourses() {
       .getCourses()
       .then(courses => {
         dispatch(getCourseSuccess(courses));
+      })
+      .catch(error => {
+        dispatch(apiCallError(error));
+        throw error;
+      });
+  };
+}
+
+export function getCoursesFilter(valorBuscar) {  
+  //console.log(valorBuscar);
+  var flag=1;
+  return function (dispatch) {
+    dispatch(beginApiCall());
+    return courseApi
+      .getCoursesFilter()
+      .then(courses => {
+        //console.log(valorBuscar);
+        dispatch(getCourseFilter(courses,valorBuscar,flag));
       })
       .catch(error => {
         dispatch(apiCallError(error));
