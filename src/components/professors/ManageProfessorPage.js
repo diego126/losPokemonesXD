@@ -40,9 +40,22 @@ export function ManageProfessorPage({
   function formIsValid() {
     const { name, grado } = professor;
     const errors = {};
+    // El pattern que vamos a comprobar
+    const pattern = new RegExp('^[A-Z]+$', 'i');    
+    
+    if (!name){
+      errors.name="Name es obligatorio"
+    }else if(!pattern.test(name)){
+      errors.name="Nombre debe tener solo letras"
+    }
+    
+    if (!grado){
+      errors.grado="Grado es obligatorio"
+    }else if(!pattern.test(grado)){
+      errors.grado="Grado debe tener solo letras"
+    }
 
-    if (!name) errors.title = "Name is required.";
-    if (!grado) errors.title = "Grado is required.";
+
 
     setErrors(errors);
     // Form is valid if the errors object still has no properties
