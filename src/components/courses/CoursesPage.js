@@ -98,13 +98,9 @@ class CoursesPage extends React.Component {
               Add Course
             </button>
 
-            {/* <input id="BuscarText" className="form-control" type="text" placeholder="Curso a buscar"></input>
-            <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" onClick={this.handleBuscarFiltro}>Buscar</button>
-            <button className="btn btn-outline-success my-2 my-sm-0 mr-md-3" type="submit" onClick={this.handleTodosCursos}>Todos los Cursos</button> */}
-
+            {this.props.total_courses > 0 &&
             <div className="row">
-              <div className="col-md-8 box_change_pagelimi text-right pull-right">
-                
+              <div className="col-md-8 box_change_pagelimi text-right pull-right">                
                  <label style={{ marginBottom: 20}} > Total Registros :{this.props.total_courses}</label>
               </div>
               <div className="col-md-4 box_change_pagelimit pull-right">
@@ -123,6 +119,8 @@ class CoursesPage extends React.Component {
                    registros
                 </div>
               </div>
+            }
+            {this.props.total_courses > 0 &&
             <CourseList
               onDeleteClick={this.handleDeleteCourse}
               onOrder={this.handleSortChange}
@@ -130,6 +128,8 @@ class CoursesPage extends React.Component {
               sortName={this.state.sortName}
               sortOrder={this.state.sortOrder}
             />
+            }
+            {this.props.total_courses > 0 &&
             <div className="mt-4 d-flex justify-content-center">
               <Pagination
                 activePage={this.state.page_current}
@@ -138,6 +138,7 @@ class CoursesPage extends React.Component {
                 onChange={this.handlePageChange}
               />
             </div>
+            }
           </>
         )}
       </>
