@@ -18,4 +18,4 @@ export const LOAD_COURSES_FILTER = "LOAD_COURSES_FILTER";
 // If it had one, our apiCallsInProgress counter would be decremented below zero
 // because we're not incrementing the number of apiCallInProgress when the delete request begins.
 export const DELETE_COURSE_OPTIMISTIC = "DELETE_COURSE_OPTIMISTIC";
-export const DELETE_PROFESSOR_OPTIMISTIC = "DELETE_COURSE_OPTIMISTIC";
+export const DELETE_PROFESSOR_OPTIMISTIC = "DELETE_PROFESSOR_OPTIMISTIC";
