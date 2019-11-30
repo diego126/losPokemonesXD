@@ -1,3 +1,14 @@
+#INTEGRANTES
+
+- Yesenia Chiroque
+- Alexis Peralta
+- Manuel Fiestas
+- Diego Tarazona
+- Richard Pumapillo
+- Waldo Trebejo
+- Erick Huarcaya
+
+
 # React with Redux
 
 Antes de ejecutar la aplicacion con la paginación, instalar lo siguiente:
